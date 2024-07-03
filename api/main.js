@@ -5,11 +5,11 @@ import cors from "cors";
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Источник
+    origin: "*", // Источник
   })
 );
 app.use(express.json());
@@ -30,13 +30,13 @@ app.post("/email", async (req, res) => {
   try {
     await transporter.sendMail({
       html: `<p>Уважаемый Николай Николаевич,</p>
-        <p>Вы получили новую заявку на бурение скважины с вашего сайта. Ниже приведены данные клиента:</p>
-        <br>
-        <p><strong>Имя клиента:</strong> ${name}</p>
-        <p><strong>Номер телефона:</strong> ${phoneNum}</p>
-        <p><strong>Email клиента:</strong> ${email}</p>
-        <br>
-        <p>С уважением, Ваша команда сайта "Бур-52"</p>`,
+        <p>Вы получили новую заявку на бурение скважины с вашего сайта. Ниже приведены данные клиента:</p>
+        <br>
+        <p><strong>Имя клиента:</strong> ${name}</p>
+        <p><strong>Номер телефона:</strong> ${phoneNum}</p>
+        <p><strong>Email клиента:</strong> ${email}</p>
+        <br>
+        <p>С уважением, Ваша команда сайта "Бур-52"</p>`,
       to: process.env.MAIL_TO,
       subject: "Новая заявка на бурение скважины с сайта",
       from: process.env.MAIL_RU_USER,
