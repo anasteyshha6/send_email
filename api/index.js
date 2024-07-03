@@ -5,7 +5,7 @@ import cors from "cors";
 
 dotenv.config();
 
-export const app = express();
+const app = express();
 
 app.use(
   cors({
@@ -50,3 +50,5 @@ app.post("/email", async (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server started on port 3000"));
+
+export default app
